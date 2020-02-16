@@ -13,63 +13,20 @@
         app:cardCornerRadius="8dp"
         app:cardBackgroundColor="@android:color/white">
 
-    <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/item_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            app:riv_corner_radius="8dp"/>
-
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="bottom"
-            android:padding="16dp">
+            android:padding="50dp">
         <TextView
                 android:id="@+id/topicTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:textStyle="bold"
                 android:textColor="#050505"
-                android:textSize="20sp"/>
+                android:textSize="24sp"/>
 
     </LinearLayout>
-
-    <FrameLayout
-            android:id="@+id/left_overlay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
-
-    </FrameLayout>
-
-    <FrameLayout
-            android:id="@+id/right_overlay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
-
-    </FrameLayout>
-
-    <FrameLayout
-            android:id="@+id/top_overlay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-    </FrameLayout>
-
-    <FrameLayout
-            android:id="@+id/bottom_overlay"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-    </FrameLayout>
 
 </androidx.cardview.widget.CardView>

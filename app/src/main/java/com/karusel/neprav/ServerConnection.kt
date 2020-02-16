@@ -28,7 +28,7 @@ class ServerConnection(val activity: KaruselActivity){
                 }
             }
 
-            override fun onResponse(call: Call, response: Response) {
+            override fun onResponse(call: Call, response: Response){
                 val body = response.body?.string()
                 println("Connected $body")
                 try {
@@ -37,8 +37,8 @@ class ServerConnection(val activity: KaruselActivity){
                     activity.run {
                         runOnUiThread {
                             Toast.makeText(this.applicationContext, "Got it!", Toast.LENGTH_LONG).show()
-
                             //null
+                            activity.new_topics = new_topics.data
                         }
                     }
                 } catch (e: JSONException) {

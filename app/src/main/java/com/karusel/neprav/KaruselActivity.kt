@@ -1,5 +1,6 @@
 package com.karusel.neprav
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -26,12 +27,14 @@ class KaruselActivity : AppCompatActivity(), CardStackListener {
     private val cardStackView by lazy { findViewById<CardStackView>(R.id.card_stack_view) }
     private val manager by lazy { NepravCardStackLayoutManager(this, this) }
     var connection = ServerConnection(this)
-    private val adapter by lazy { CardStackAdapter(createTopics()) }
+    var new_topics = createTopics()
+    var adapter = CardStackAdapter(createTopics())
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        connection.getTopics()
         setContentView(R.layout.activity_karusel)
         //установка вида и анимации карточек
         setupCardStackView()
@@ -42,7 +45,7 @@ class KaruselActivity : AppCompatActivity(), CardStackListener {
 //        GlobalScope.launch(Dispatchers.Main) {
 //            var topics: Topics
 //        }
-        connection.getTopics()
+
     }
 
 
@@ -64,7 +67,7 @@ class KaruselActivity : AppCompatActivity(), CardStackListener {
         //подгружаем топики (в будущем адекватно)
         if (manager.topPosition == adapter.itemCount - 5) {
             paginate()
-            connection.getTopics()
+
         }
     }
 
@@ -156,8 +159,9 @@ class KaruselActivity : AppCompatActivity(), CardStackListener {
 
     //подгрузка топиков
     private fun paginate() {
+        connection.getTopics()
         val old = adapter.getTopics()
-        val new = old.plus(createTopics())
+        val new = old.plus(new_topics)
         val callback = TopicDiffCallback(old, new)
         val result = DiffUtil.calculateDiff(callback)
         adapter.setTopics(new)
@@ -266,7 +270,7 @@ class KaruselActivity : AppCompatActivity(), CardStackListener {
             topic_id = 0,
             date_create = "06.05.12",
             intent = "DISCUSS",
-            text = "number one",
+            text = "Topics are loading",
             user_id = 111
         )
     }
